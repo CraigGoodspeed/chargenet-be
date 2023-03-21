@@ -1,0 +1,8 @@
+{
+  "AuthParameters": {
+    "USERNAME": "craig@goodspeed.co.za",
+    "PASSWORD": "AWeakP@5sw0rd"
+  },
+  "AuthFlow": "USER_PASSWORD_AUTH",
+  "ClientId": "ap69g8hfs5r0pepckapj0b0fj"
+}
