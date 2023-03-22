@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/product")
-public class Product {
-    @GetMapping("info")
-    public String getInfo() {
-        return "----PRODUCT----";
+@RequestMapping("/admin")
+public class Admin {
+    @GetMapping("product/info")
+    public String zaza() {
+        return "------ADMIN-----";
     }
-
 }

@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog">
+    <changeSet id="product" author="Craig Goodspeed">
+        <createTable tableName="Product">
+            <column name="id" autoIncrement="true" type="int">
+                <constraints primaryKey="true" primaryKeyName="pk_product"/>
+            </column>
+            <column name="description" type="varchar(255)" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

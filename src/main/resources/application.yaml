@@ -1,6 +1,21 @@
 spring:
   security:
     oauth2:
-      resourceserver:
+      resource-server:
         jwt:
           issuer-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_jB5fWTEuN
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/chargenet-be
+      username: chargenet
+      password: WelikeElectricvehicles
+    username: chargenet
+    password: WelikeElectricvehicles
+    url: jdbc:mysql://localhost:3306/chargenet-be
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
