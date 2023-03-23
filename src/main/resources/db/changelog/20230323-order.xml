@@ -5,22 +5,22 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-    <changeSet id="product" author="Craig Goodspeed">
-        <createTable tableName="product">
+    <changeSet id="order" author="Craig Goodspeed">
+        <createTable tableName="order">
             <column name="id" autoIncrement="true" type="int">
                 <constraints primaryKey="true" primaryKeyName="pk_product"/>
             </column>
-            <column name="description" type="varchar(1000)" >
+            <column name="product_id" type="int" >
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)" >
+            <column name="customer" type="varchar(255)" >
                 <constraints nullable="false"/>
             </column>
-            <column name="enabled" type="bit" defaultValue="1"/>
-            <column name="price" type="decimal">
-                <constraints nullable="false"/>
-            </column>
+            <column name="date_created" type="datetime" defaultValue="now()"/>
         </createTable>
+    </changeSet>
+    <changeSet id="order_lines" author="craig goodspeed">
+
     </changeSet>
     <changeSet id="add_date_created" author="craig goodspeed">
         <addColumn tableName="product">

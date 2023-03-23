@@ -16,6 +16,8 @@ public class SecurityConfiguration {
     @Profile("!dev")
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
+                .requestMatchers("/ping")
+                .permitAll()
                 .requestMatchers("/admin/**")
                 .hasAnyRole("admin")
                 .requestMatchers("/v1/product/**")
