@@ -3,24 +3,28 @@ package nz.co.goodspeed.chargenetbe.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.joda.time.DateTime;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    DateTime dateCreated;
+    @CreationTimestamp
+    Timestamp dateCreated;
 
     String customer;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name="id", table = "order_lines",referencedColumnName = "order_id", nullable = false)
-    List<OrderLines> orderLines;
+    @OneToMany(cascade=CascadeType.PERSIST,mappedBy = "id", targetEntity = OrderLines.class)
+    Set<OrderLines> orderLines;
 
 }

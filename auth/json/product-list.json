@@ -1,0 +1,28 @@
+[
+  {
+    "description": "A heavy sledge hammer",
+    "name": "sledge hammer",
+    "price": "124.95"
+  },
+  {
+    "description": "a super sharp axe, perfect for cutting down trees",
+    "name": "axe",
+    "price": "199"
+  },
+  {
+    "description": "For you fine cutting needs",
+    "name": "Bandsaw",
+    "price": "1095"
+  },
+  {
+    "description": "Breaking that stone that is tough to break",
+    "name": "Chisel",
+    "price": "15"
+  },
+  {
+    "description": "For most sawing needs",
+    "name": "Hacksaw",
+    "price": "21.95"
+  }
+
+]

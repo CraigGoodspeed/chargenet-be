@@ -3,23 +3,19 @@ package nz.co.goodspeed.chargenetbe.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import software.amazon.ion.Decimal;
 
 @Entity
 @Getter
 @Setter
 public class OrderLines {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    Order order;
+    Integer productId;
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    Product product;
+    @ManyToOne(cascade = CascadeType.PERSIST, targetEntity = Order.class)
+    Order order;
 
     Double price;
 

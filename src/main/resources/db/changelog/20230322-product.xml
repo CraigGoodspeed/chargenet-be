@@ -16,18 +16,27 @@
             <column name="name" type="varchar(255)" >
                 <constraints nullable="false"/>
             </column>
-            <column name="enabled" type="bit" defaultValue="1"/>
-            <column name="price" type="decimal">
+            <column name="enabled" type="tinyint" defaultValue="1" defaultOnNull="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
     <changeSet id="add_date_created" author="craig goodspeed">
         <addColumn tableName="product">
-            <column name="date_created" type="datetime" defaultValue="now()"/>
+            <column name="date_created" type="datetime(6)" defaultValueComputed="${now}">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="product">
+            <column name="last_updated" type="datetime(6)" defaultValueComputed="${now}">
+                <constraints nullable="false"/>
+            </column>
         </addColumn>
     </changeSet>
-    <changeSet id="add_date_created" author="craig goodspeed">
+    <changeSet id="add_created_by" author="craig goodspeed">
         <addColumn tableName="product">
             <column name="created_by" type="varchar(512)"/>
         </addColumn>

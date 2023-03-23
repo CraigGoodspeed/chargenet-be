@@ -7,13 +7,13 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
     <changeSet id="order_lines" author="Craig Goodspeed">
         <createTable tableName="order_lines">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_order_lines"/>
             </column>
             <column name="order_id" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="price" type="decimal">
+            <column name="price" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
             <column name="product_id" type="int">
@@ -23,7 +23,7 @@
         </createTable>
     </changeSet>
     <changeSet id="fk_order_lines" author="craig goodspeed">
-        <addForeignKeyConstraint baseTableName="order_lines" baseColumnNames="order_id" constraintName="fk_order_line" referencedTableName="order"
+        <addForeignKeyConstraint baseTableName="order_lines" baseColumnNames="order_id" constraintName="fk_order_line" referencedTableName="orders"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="order_lines" baseColumnNames="product_id" constraintName="fk_product" referencedTableName="product"
                                  referencedColumnNames="id"/>

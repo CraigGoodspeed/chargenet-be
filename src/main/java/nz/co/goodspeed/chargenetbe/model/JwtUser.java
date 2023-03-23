@@ -1,5 +1,6 @@
 package nz.co.goodspeed.chargenetbe.model;
 
+import nz.co.goodspeed.chargenetbe.auth.TokenParser;
 import org.springframework.security.oauth2.jwt.Jwt;
 
 import java.util.Arrays;
@@ -28,8 +29,8 @@ public class JwtUser {
 
     private final Jwt jwt;
     private final CognitoTokenType type;
-    public JwtUser(String token) {
-        this.jwt = Jwt.withTokenValue(token).build();
+    public JwtUser(Jwt token) {
+        this.jwt = token;
         String tokenType = jwt.getClaim("token_use");
         type =
                 Arrays.stream(CognitoTokenType.values()).filter(

@@ -33,7 +33,7 @@ public class DbConfiguration {
     @Bean
     public DataSource liquibaseDatasource() {
         HikariDataSource ds = dataSource();
-        ds.setMaximumPoolSize(1);
+        ds.setMaximumPoolSize(2);
         return ds;
     }
 }

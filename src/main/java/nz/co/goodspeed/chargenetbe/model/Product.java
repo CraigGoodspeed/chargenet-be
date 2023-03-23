@@ -1,32 +1,37 @@
 package nz.co.goodspeed.chargenetbe.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DialectOverride;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String description;
     String name;
     Double price;
-    Boolean enabled;
+    Boolean enabled = true;
 
-    DateTime dateCreated;
+    @CreationTimestamp
+    Timestamp dateCreated;
+
+    @UpdateTimestamp
+    Timestamp lastUpdated;
 
     String createdBy;
 

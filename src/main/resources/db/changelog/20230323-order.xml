@@ -5,31 +5,17 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-    <changeSet id="order" author="Craig Goodspeed">
-        <createTable tableName="order">
+    <changeSet id="orders" author="Craig Goodspeed">
+        <createTable tableName="orders">
             <column name="id" autoIncrement="true" type="int">
                 <constraints primaryKey="true" primaryKeyName="pk_product"/>
-            </column>
-            <column name="product_id" type="int" >
-                <constraints nullable="false"/>
             </column>
             <column name="customer" type="varchar(255)" >
                 <constraints nullable="false"/>
             </column>
-            <column name="date_created" type="datetime" defaultValue="now()"/>
+            <column name="date_created" type="datetime(6)" defaultValueComputed="${now}">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-    </changeSet>
-    <changeSet id="order_lines" author="craig goodspeed">
-
-    </changeSet>
-    <changeSet id="add_date_created" author="craig goodspeed">
-        <addColumn tableName="product">
-            <column name="date_created" type="datetime" defaultValue="now()"/>
-        </addColumn>
-    </changeSet>
-    <changeSet id="add_date_created" author="craig goodspeed">
-        <addColumn tableName="product">
-            <column name="created_by" type="varchar(512)"/>
-        </addColumn>
     </changeSet>
 </databaseChangeLog>
