@@ -19,13 +19,14 @@ public class CognitoRolesClaimConverter implements Converter<Jwt, AbstractAuthen
     public CognitoRolesClaimConverter(JwtGrantedAuthoritiesConverter authConverter) {
         this.authConverter = authConverter;
     }
+
     @Override
     public AbstractAuthenticationToken convert(Jwt source) {
         List<GrantedAuthority> convertedItems = new ArrayList(authConverter.convert(source));
-        List<String> roles = (List<String>)source.getClaims().get("cognito:groups");
-        if(!CollectionUtils.isEmpty(roles)) {
-            roles.stream().forEach(
-                    i -> convertedItems.add(new SimpleGrantedAuthority(String.format("ROLE_%s",i)))
+        List<String> roles = (List<String>) source.getClaims().get("cognito:groups");
+        if (!CollectionUtils.isEmpty(roles)) {
+            roles.forEach(
+                    i -> convertedItems.add(new SimpleGrantedAuthority(String.format("ROLE_%s", i)))
             );
         }
         return new JwtAuthenticationToken(source, convertedItems);
